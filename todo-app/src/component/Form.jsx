@@ -2,14 +2,13 @@ import { useState } from "react";
 import styles from "./modules/Form.module.css";
 
 export default function Form({ todos, setTodos }) {
+  // const [todo, setTodo] = useState("");
   const [todo, setTodo] = useState({ name: "", done: false });
-  const [count, setCount] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (todo.name.trim() !== "") {
-      setTodos([...todos, todo.name.trim()]);
-      setCount(count + 1);
+      setTodos([...todos, todo]);
       setTodo({ name: "", done: false });
     } else {
       alert("Please enter a task");

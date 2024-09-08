@@ -9,9 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-.complete {
-  text-decoration: line-through;
+  cursor: pointer;
 }
 
 .deleteX {
@@ -26,4 +24,9 @@
 
 .deleteX:hover {
   background-color: #c6d45f;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #ff0000;
 }
