@@ -12,6 +12,7 @@ export default function TodoItem({ item, todos, setTodos, id }) {
     );
   }
   const strikethrough = item.done ? styles.strikethrough : "";
+
   // Extract the text content from the item
 
   return (
