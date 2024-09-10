@@ -1,6 +1,5 @@
 import styles from "./modules/TodoItem.module.css";
 export default function TodoItem({ item, todos, setTodos, id }) {
-  console.log(todos);
   function handleDelete(id) {
     const newTodos = todos.filter((_, index) => index !== id);
     setTodos(newTodos);
