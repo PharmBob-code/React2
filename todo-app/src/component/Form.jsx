@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./modules/Form.module.css";
 
-export default function Form({ todos, setTodos }) {
-  // const [todo, setTodo] = useState("");
+export default function Form({ todos, setTodos, msg, setMsg }) {
   const [todo, setTodo] = useState({ name: "", done: false });
+
+  useEffect(() => {
+    handleMsg();
+  }, [todos]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +24,15 @@ export default function Form({ todos, setTodos }) {
       alert("Please enter a task");
     }
   }
+
+  function handleMsg() {
+    if (todos.length === 0) {
+      setMsg("What will you be doing today?");
+    } else {
+      setMsg("");
+    }
+  }
+
   return (
     <form className={styles.todoForm} onSubmit={handleSubmit}>
       <input

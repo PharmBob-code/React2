@@ -5,14 +5,20 @@ import styles from "./modules/Todo.module.css";
 import Footer from "./Footer";
 
 export default function Todo() {
+  const [msg, setMsg] = useState("What will you be doing today?");
   const [todos, setTodos] = useState([]);
   const storedTodos = JSON.parse(localStorage.getItem("todos"));
   const completedTodos = todos.filter((status) => status.done).length;
   return (
     <>
       <div className={styles.todoContainer}>
-        <Form todos={todos} setTodos={setTodos} />
-        <TodoList todos={storedTodos} setTodos={setTodos} />
+        <Form
+          todos={storedTodos}
+          setTodos={setTodos}
+          msg={msg}
+          setMsg={setMsg}
+        />
+        <TodoList todos={storedTodos} setTodos={setTodos} msg={msg} />
         <Footer completedTodos={completedTodos} todos={storedTodos} />
       </div>
     </>
