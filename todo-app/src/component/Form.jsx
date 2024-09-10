@@ -8,8 +8,15 @@ export default function Form({ todos, setTodos }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (todo.name.trim() !== "") {
-      setTodos([...todos, todo]);
-      setTodo({ name: "", done: false });
+      if (
+        todos.some((item) => item.name === todo.name && item.done === false)
+      ) {
+        alert("This task already exists!");
+      } else {
+        setTodos([...todos, todo]);
+        setTodo({ name: "", done: false });
+        localStorage.setItem("todos", JSON.stringify([...todos, todo]));
+      }
     } else {
       alert("Please enter a task");
     }

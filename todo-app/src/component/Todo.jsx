@@ -6,14 +6,14 @@ import Footer from "./Footer";
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
+  const storedTodos = JSON.parse(localStorage.getItem("todos"));
   const completedTodos = todos.filter((status) => status.done).length;
-
   return (
     <>
       <div className={styles.todoContainer}>
         <Form todos={todos} setTodos={setTodos} />
-        <TodoList todos={todos} setTodos={setTodos} />
-        <Footer completedTodos={completedTodos} todos={todos} />
+        <TodoList todos={storedTodos} setTodos={setTodos} />
+        <Footer completedTodos={completedTodos} todos={storedTodos} />
       </div>
     </>
   );

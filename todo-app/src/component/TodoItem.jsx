@@ -1,15 +1,18 @@
 import styles from "./modules/TodoItem.module.css";
 export default function TodoItem({ item, todos, setTodos, id }) {
+  console.log(todos);
   function handleDelete(id) {
-    setTodos(todos.filter((_, ind) => ind !== id));
+    const newTodos = todos.filter((_, index) => index !== id);
+    setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   }
 
   function handleStatus(id) {
-    setTodos(
-      todos.map((item, ind) => {
-        return ind === id ? { ...item, done: !item.done } : item;
-      })
-    );
+    const newTodos = todos.map((item, ind) => {
+      return ind === id ? { ...item, done: !item.done } : item;
+    });
+    setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   }
   const strikethrough = item.done ? styles.strikethrough : "";
 
